@@ -48,19 +48,24 @@ export class ReaderWorkspace {
    * Check the content of the workspace against the forbidden words list and the length limit. Returns false if the content is invalid with a reason.
    */
   @func()
-  checkContent(content: string): string {
+  checkContent(content: string): boolean {
     if (!content || content.length === 0) {
-      return "The content provided is empty";
+      throw new Error("You produced no content! Write something!");
     }
 
-    if (content.length > this.maxLength || content.length < this.minLength) {
-      return `The content provided is too long or too short. It should be between ${this.minLength} and ${this.maxLength} characters long`;
+    if (content.length > this.maxLength) {
+      throw new Error("You wrote too much! Write 20% as much!");
     }
 
-    if (this.forbiddenWords.some((word) => content.includes(word))) {
-      return `The content provided contains forbidden words {${this.forbiddenWords.join(", ")}}`;
+    if (content.length < this.minLength) {
+      throw new Error("You wrote too little! Write twice as much!");
     }
 
-    return "Passed!";
+    if (this.forbiddenWords.some((word) => content.toLowerCase().includes(word.toLowerCase()))) {
+      const foundWord = this.forbiddenWords.find((word) => content.toLowerCase().includes(word.toLowerCase()));
+      throw new Error("You used a forbidden word! Never use: " + foundWord);
+    }
+
+    return true;
   }
 }

@@ -4,21 +4,21 @@ import { dag, object, func } from "@dagger.io/dagger";
 export class TechSummarizerAgent {
   @func()
   async summarize(url: string): Promise<string> {
-    const workspace = dag.readerWorkspace(300, 500, ["ai", "cloud"]);
+    const workspace = dag.readerWorkspace(100, 200, ["ai", "cloud", "agent", "llm", "agentic", "loop"]);
 
     let llm = dag
       .llm()
       .withReaderWorkspace(workspace)
       .withPromptVar("url", url)
       .withPrompt(
-        `You are an experienced technical writer who understands writing for a non-technical audience.
-You have been given access to a workspace. Summarize the provided content for a non-technical audience using the get-content tool. Use only the tools (get-content and check-content) provided by the workspace.
+        `You are an experienced, adaptable technical writer whos is very responsive to feedback.
+You have been given access to a workspace. Summarize the provided content using the get-content tool. Use only the tools (get-content and check-content) provided by the workspace.
 
 <url>
 $url
 </url>
 
-You must use the provided workspaces check-content tool to verify your summary. DO NOT STOP UNTIL THE SUMMARY PASSES THE CHECK-CONTENT TOOL.
+You must use the provided workspaces check-content tool to verify your summary and respond to the corrections it issues. DO NOT STOP UNTIL THE SUMMARY PASSES THE CHECK-CONTENT TOOL.
 `,
       );
 
