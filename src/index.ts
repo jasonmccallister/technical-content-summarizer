@@ -1,13 +1,4 @@
-import * as cheerio from "cheerio";
-import {
-  dag,
-  Container,
-  File,
-  Directory,
-  object,
-  func,
-} from "@dagger.io/dagger";
-import { getLoad } from "cheerio/dist/commonjs/load";
+import { dag, object, func } from "@dagger.io/dagger";
 
 @object()
 export class TechSummarizerAgent {
