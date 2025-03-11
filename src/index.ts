@@ -4,7 +4,7 @@ import { dag, object, func } from "@dagger.io/dagger";
 export class TechSummarizerAgent {
   @func()
   async summarize(url: string): Promise<string> {
-    const workspace = dag.readerWorkspace(100, 200, ["ai", "cloud"]);
+    const workspace = dag.readerWorkspace(300, 500, ["ai", "cloud"]);
 
     let llm = dag
       .llm()

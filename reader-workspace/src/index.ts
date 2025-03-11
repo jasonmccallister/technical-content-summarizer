@@ -1,5 +1,5 @@
 import * as cheerio from "cheerio";
-import { dag, Container, Directory, object, func } from "@dagger.io/dagger";
+import { object, func } from "@dagger.io/dagger";
 
 @object()
 export class ReaderWorkspace {
@@ -45,22 +45,22 @@ export class ReaderWorkspace {
   }
 
   /**
-   * Check the content of the workspace against the forbidden words list and the length limit. Returns false if the content is invalid.
+   * Check the content of the workspace against the forbidden words list and the length limit. Returns false if the content is invalid with a reason.
    */
   @func()
-  checkContent(content: string): boolean {
+  checkContent(content: string): string {
     if (!content || content.length === 0) {
-      return false;
+      return "The content provided is empty";
     }
 
     if (content.length > this.maxLength || content.length < this.minLength) {
-      return false;
+      return `The content provided is too long or too short. It should be between ${this.minLength} and ${this.maxLength} characters long`;
     }
 
     if (this.forbiddenWords.some((word) => content.includes(word))) {
-      return false;
+      return `The content provided contains forbidden words {${this.forbiddenWords.join(", ")}}`;
     }
 
-    return false;
+    return "Passed!";
   }
 }
