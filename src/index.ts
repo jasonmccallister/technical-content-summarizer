@@ -5,9 +5,9 @@ export class TechSummarizerAgent {
   @func()
   async summarize(
     url: string,
-    minLength = 100,
-    maxLength = 200,
-    forbiddenWords = [],
+    minLength: number = 100,
+    maxLength: number = 200,
+    forbiddenWords: string[] = [],
   ): Promise<string> {
     const workspace = dag.readerWorkspace(minLength, maxLength, forbiddenWords);
 
