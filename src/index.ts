@@ -28,6 +28,7 @@ You must use the provided workspaces check-content tool to verify your summary a
       );
 
     let _ = llm.readerWorkspace();
+
     return llm.lastReply();
   }
 }

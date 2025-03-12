@@ -39,6 +39,7 @@ export class ReaderWorkspace {
     });
 
     const content = $("body").text().replace(/\s+/g, " ");
+
     this.plainTextContent = content;
 
     return content;
