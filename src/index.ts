@@ -7,7 +7,7 @@ export class TechSummarizerAgent {
     url: string,
     minLength = 100,
     maxLength = 200,
-    forbiddenWords = ["cloud", "ai", "agent", "llm", "agentic", "loop"],
+    forbiddenWords = [],
   ): Promise<string> {
     const workspace = dag.readerWorkspace(minLength, maxLength, forbiddenWords);
 
