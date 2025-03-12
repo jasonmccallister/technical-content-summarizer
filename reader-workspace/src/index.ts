@@ -71,7 +71,8 @@ export class ReaderWorkspace {
 
     if (
       this.forbiddenWords.some((word) =>
-        content.toLowerCase().includes(word.toLowerCase()),
+        // pad the word with spaces to avoid matching substrings
+        content.toLowerCase().includes(" " + word.toLowerCase() + " "),
       )
     ) {
       const foundWord = this.forbiddenWords.find((word) =>
