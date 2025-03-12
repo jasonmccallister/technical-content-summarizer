@@ -54,15 +54,29 @@ export class ReaderWorkspace {
     }
 
     if (content.length > this.maxLength) {
-      throw new Error("You wrote too much! Write 20% as much!");
+      throw new Error(
+        "You wrote too much! The maximum length is " +
+          this.maxLength +
+          " characters.",
+      );
     }
 
     if (content.length < this.minLength) {
-      throw new Error("You wrote too little! Write twice as much!");
+      throw new Error(
+        "You wrote too little! The minimum length is " +
+          this.minLength +
+          " characters.",
+      );
     }
 
-    if (this.forbiddenWords.some((word) => content.toLowerCase().includes(word.toLowerCase()))) {
-      const foundWord = this.forbiddenWords.find((word) => content.toLowerCase().includes(word.toLowerCase()));
+    if (
+      this.forbiddenWords.some((word) =>
+        content.toLowerCase().includes(word.toLowerCase()),
+      )
+    ) {
+      const foundWord = this.forbiddenWords.find((word) =>
+        content.toLowerCase().includes(word.toLowerCase()),
+      );
       throw new Error("You used a forbidden word! Never use: " + foundWord);
     }
 

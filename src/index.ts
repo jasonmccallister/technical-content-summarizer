@@ -3,8 +3,13 @@ import { dag, object, func } from "@dagger.io/dagger";
 @object()
 export class TechSummarizerAgent {
   @func()
-  async summarize(url: string): Promise<string> {
-    const workspace = dag.readerWorkspace(100, 200, ["ai", "cloud", "agent", "llm", "agentic", "loop"]);
+  async summarize(
+    url: string,
+    minLength = 100,
+    maxLength = 200,
+    forbiddenWords = ["cloud", "ai", "agent", "llm", "agentic", "loop"],
+  ): Promise<string> {
+    const workspace = dag.readerWorkspace(minLength, maxLength, forbiddenWords);
 
     let llm = dag
       .llm()
