@@ -20,29 +20,26 @@ Start a dev Dagger Engine with LLM support using:
 https://docs.dagger.io/ai-agents#initial-setup
 
 $ Clone the repo and enter into Dagger Shell:
-```
+```shell
 git clone git@github.com:jasonmccallister/technical-content-summarizer.git
 ```
-```
+```shell
 cd technical-content-summarizer
 ```
-```
+```shell
 cp .env.example .env
 # make sure you have the correct values in .env
 ```
-```
+```shell
 dagger
 ```
 
 ⋈ Run summarize function:
-```
+```shell
 summarize https://news.microsoft.com/source/features/innovation/microsofts-majorana-1-chip-carves-new-path-for-quantum-computing/ --min-length 400 --max-length 900
 ```
 
-⋈ Check out <whatever>.
-```
-...
-```
+⋈ Check out the summary.
 
 *note: Increase verbosity to 2 or 3 and/or view in Dagger Cloud for best results*
 
