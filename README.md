@@ -12,7 +12,7 @@ This module is an example agent that uses an AI Agent to summarize technical con
 
 The LLM is given a reader workspace that has two functions: `getContent` and `checkContent`. The `getContent` function is used to extract the content from the source code and the `checkContent` function is used to verify the minimum length maximum length, and the use of any forbidden words. The AI Agent is given a URL and told to use only the tools in the workspace its given to summarize the content in non-technical terms and verify using the `checkContent` function. It will not stop until the content passes the `checkContent` function.
 
-<GIF or MOV demo, can drag and drop and won't be part of repo, it seems>
+https://github.com/user-attachments/assets/c7b8d869-f0d5-4423-9a91-fa5fe978d591
 
 ### How do I try it?
 
