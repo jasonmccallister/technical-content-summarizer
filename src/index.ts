@@ -2,6 +2,9 @@ import { dag, object, func } from "@dagger.io/dagger";
 
 @object()
 export class TechSummarizerAgent {
+  /**
+   * Summarize the content of the provided URL.
+   */
   @func()
   async summarize(
     url: string,
