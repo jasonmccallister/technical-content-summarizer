@@ -4,7 +4,7 @@
 
 ## Overview
 
-This is an example AI Agent to summarize technical content from a URL into non-technical terms.
+This is an AI Agent to summarize technical content from a URL into non-technical terms.
 
 Built with [Dagger](https://dagger.io), the open platform for agentic software and uses the Dagger TypeScript SDK.
 
