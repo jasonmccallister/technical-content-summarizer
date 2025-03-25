@@ -1,23 +1,32 @@
 # Technical Content Summarizer 🤖
 
-## Take any URL and get a summary of the content on the page, in non-technical terms.
+**Take any URL and get a summary of the content on the page, in non-technical terms.**
 
-### What is this?
+## Overview
 
-This module is an example agent that uses an AI Agent to summarize technical content from a URL to non-technical terms. It uses the Dagger TypeScript SDK.
+This is an example AI Agent to summarize technical content from a URL into non-technical terms.
+
+Built with [Dagger](https://dagger.io), the open platform for agentic software and uses the Dagger TypeScript SDK.
 
 > Note: I found the best results are achieved when using the Gemini integration but your mileage may vary.
 
-### What makes this an AI Agent?
-
-The LLM is given a reader workspace that has two functions: `getContent` and `checkContent`. The `getContent` function is used to extract the content from the source code and the `checkContent` function is used to verify the minimum length maximum length, and the use of any forbidden words. The AI Agent is given a URL and told to use only the tools in the workspace its given to summarize the content in non-technical terms and verify using the `checkContent` function. It will not stop until the content passes the `checkContent` function.
+## Demo
 
 https://github.com/user-attachments/assets/c7b8d869-f0d5-4423-9a91-fa5fe978d591
 
-### How do I try it?
+## Features
 
-Start a dev Dagger Engine with LLM support using:
-https://docs.dagger.io/ai-agents#initial-setup
+- **Summarize Content**: Take any URL and get a summary of the content on the page.
+- **Maximum and Minimum Length**: Set the minimum and maximum length of the summary.
+- **Forbidden Words**: Set a list of forbidden words that should not be included in the summary.
+
+## What makes this an AI Agent?
+
+The LLM is given a reader workspace that has two functions: `getContent` and `checkContent`. The `getContent` function is used to extract the content from the source code and the `checkContent` function is used to verify the minimum length maximum length, and the use of any forbidden words. The AI Agent is given a URL and told to use only the tools in the workspace its given to summarize the content in non-technical terms and verify using the `checkContent` function. It will not stop until the content passes the `checkContent` function.
+
+## Installation
+
+Install [Dagger](https://docs.dagger.io/install)
 
 $ Clone the repo and enter into Dagger Shell:
 ```shell
