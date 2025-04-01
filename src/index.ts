@@ -12,26 +12,26 @@ export class TechSummarizerAgent {
     maxLength: number = 200,
     forbiddenWords: string[] = [],
   ): Promise<string> {
-    const workspace = dag.readerWorkspace(minLength, maxLength, forbiddenWords);
+    const ws = dag.readerWorkspace(minLength, maxLength, forbiddenWords);
 
-    let llm = dag
+    const env = dag
+      .env()
+      .withReaderWorkspaceInput("workspace", ws, "The workspace to use ")
+      .withStringInput("url", url, "The URL to use for summarization");
+
+    const summary = dag
       .llm()
-      .withReaderWorkspace(workspace)
-      .withPromptVar("url", url)
+      .withEnv(env)
       .withPrompt(
         `You are an experienced, adaptable technical writer whos is very responsive to feedback.
-You have been given access to a workspace. Summarize the provided content using the get-content tool. Use only the tools (get-content and check-content) provided by the workspace.
+You have been given access to a workspace.
 
-<url>
 $url
-</url>
 
-You must use the provided workspaces check-content tool to verify your summary and respond to the corrections it issues. DO NOT STOP UNTIL THE SUMMARY PASSES THE CHECK-CONTENT TOOL.
-`,
-      );
+You must use the provided workspaces check-content tool to verify your summary and respond to the corrections it issues. DO NOT STOP UNTIL THE SUMMARY PASSES THE CHECK-CONTENT TOOL.`,
+      )
+      .lastReply();
 
-    let _ = llm.readerWorkspace();
-
-    return llm.lastReply();
+    return summary;
   }
 }
