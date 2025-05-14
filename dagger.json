@@ -1,6 +1,6 @@
 {
   "name": "tech-summarizer-agent",
-  "engineVersion": "v0.18.0",
+  "engineVersion": "v0.18.7",
   "sdk": {
     "source": "typescript"
   },
